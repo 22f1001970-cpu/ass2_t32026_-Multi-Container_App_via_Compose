@@ -1,8 +1,9 @@
+cat > docker-compose.yml <<'EOF'
 services:
   redis:
     image: redis:7-alpine
     network_mode: host
-    command: redis-server --appendonly yes
+    command: redis-server --appendonly yes --bind 127.0.0.1
     volumes:
       - redis_data:/data
     healthcheck:
@@ -23,3 +24,4 @@ services:
 
 volumes:
   redis_data:
+EOF
